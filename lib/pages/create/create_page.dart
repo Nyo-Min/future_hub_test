@@ -63,9 +63,8 @@ class _AddAppointmentScreenState extends State<CreatePage> {
       StoreManager.getAppointmentList = [
         newAppointment
       ];
-      await SyncService().checkOnlineStatus();
       addAppointmentSuccess();
-
+      await SyncService().checkOnlineStatus();
     }
   }
 

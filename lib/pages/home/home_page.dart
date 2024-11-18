@@ -40,16 +40,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Align(
+          alignment: Alignment.centerLeft,
           child: TitleTextStyle(
             titleText: "APPOINTMENT LISTS",
             titleStyle: robotoFontStyleWC,
           ),
         ),
-        actions: [
-          IconButton(onPressed: (){
-            LocalDatabase.deleteAllAppointments();
-          }, icon: const Icon(Icons.sync))
-        ],
         backgroundColor: CustomColor.primaryBlue,
         iconTheme: const IconThemeData(
           color: Colors.white, //change your color here
@@ -268,6 +264,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
           ),
+          const SizedBox(height: CustomSize.marginMedium,)
         ],
       ),
     );

@@ -118,8 +118,6 @@ Future<void> checkOnlineStatus() async {
       for (var updateAppointmentList in StoreManager.getUpdatedList) {
         debugPrint("my $updateAppointmentList");
         await updateAppointmentInAPI(updateAppointmentList);
-
-        // await updateAppointmentInAPI();
       }
 
       // Sync Deleted Appointments

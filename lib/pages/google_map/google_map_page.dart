@@ -28,14 +28,15 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
       longitude = widget.longitude; // 96.1954
       debugPrint("My db is $latitude $longitude");
       _center = LatLng(double.parse(latitude), double.parse(longitude));
+      _markers.add(
+        Marker(
+          markerId: const MarkerId('1'),
+          position: _center,
+          infoWindow: const InfoWindow(title: 'Myanmar Yangon'),
+        ),
+      );
     });
-    _markers.add(
-      Marker(
-        markerId: const MarkerId('1'),
-        position: _center,
-        infoWindow: const InfoWindow(title: 'Myanmar Yangon'),
-      ),
-    );
+
   }
 
   void _onMapCreated(GoogleMapController controller) {
@@ -49,7 +50,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
         title: Align(
           alignment: Alignment.centerLeft,
           child: TitleTextStyle(
-            titleText: "Create New Appointment",
+            titleText: "Google Map",
             titleStyle: robotoFontStyleWC,
           ),
         ),
@@ -62,7 +63,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
           target: _center,
-          zoom: 12.0,
+          zoom: 10.0,
         ),
         markers: _markers,
       ),

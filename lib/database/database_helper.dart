@@ -25,7 +25,7 @@ class LocalDatabase {
   static void _onCreate(Database db, int version) async {
     await db.execute('''
       CREATE TABLE appointments(
-        id TEXT PRIMARY KEY AUTOINCREMENT,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT,
         customerName TEXT,
         company TEXT,
