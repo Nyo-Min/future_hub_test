@@ -3,230 +3,182 @@
     {
       "id": 1,
       "title": "Business Meeting",
-      "customer_name": "Jane Smith",
+      "customerName": "Jane Smith",
       "company": "XYZ Enterprises",
-      "appointment_description": "Discussing Q4 strategies",
-      "appointment_date_time": "2024-11-17T14:00:00",
-      "appointment_location": {
-        "latitude": 34.0522,
-        "longitude": -118.2437
-      }
+      "description": "Discussing Q4 strategies",
+      "appointmentDateTime": "2024-11-17T14:00:00",
+      "latitude": 34.0522,
+      "longitude": -118.2437
     },
     {
       "id": 2,
-      "title": "Website Consultation",
-      "customer_name": "Alice Johnson",
-      "company": "Tech Innovations",
-      "appointment_description": "Consulting on website redesign",
-      "appointment_date_time": "2024-11-18T11:30:00",
-      "appointment_location": {
-        "latitude": 40.7128,
-        "longitude": -74.0060
-      }
+      "title": "Project Kickoff",
+      "customerName": "John Doe",
+      "company": "ABC Corp",
+      "description": "Initial project planning and team alignment",
+      "appointmentDateTime": "2024-11-18T09:00:00",
+      "latitude": 40.7128,
+      "longitude": -74.0060
     },
     {
       "id": 3,
-      "title": "Marketing Strategy Meeting",
-      "customer_name": "Bob Williams",
-      "company": "Marketing Gurus",
-      "appointment_description": "Planning the next ad campaign",
-      "appointment_date_time": "2024-11-19T09:00:00",
-      "appointment_location": {
-        "latitude": 41.8781,
-        "longitude": -87.6298
-      }
+      "title": "Client Consultation",
+      "customerName": "Maria Garcia",
+      "company": "Tech Solutions",
+      "description": "Consulting on website redesign and improvements",
+      "appointmentDateTime": "2024-11-18T11:30:00",
+      "latitude": 41.8781,
+      "longitude": -87.6298
     },
     {
       "id": 4,
-      "title": "Tech Support Call",
-      "customer_name": "Eve Davis",
-      "company": "Cloud Services",
-      "appointment_description": "Resolving server issues",
-      "appointment_date_time": "2024-11-20T15:00:00",
-      "appointment_location": {
-        "latitude": 51.5074,
-        "longitude": -0.1278
-      }
+      "title": "Team Sync",
+      "customerName": "Alex Johnson",
+      "company": "Innovatech",
+      "description": "Weekly status update meeting with the team",
+      "appointmentDateTime": "2024-11-19T10:00:00",
+      "latitude": 37.7749,
+      "longitude": -122.4194
     },
     {
       "id": 5,
       "title": "Product Demo",
-      "customer_name": "Tom Miller",
-      "company": "Innovative Tech",
-      "appointment_description": "Demoing new software features",
-      "appointment_date_time": "2024-11-21T13:00:00",
-      "appointment_location": {
-        "latitude": 48.8566,
-        "longitude": 2.3522
-      }
+      "customerName": "David Lee",
+      "company": "Fintech Global",
+      "description": "Demonstrating new product features and updates",
+      "appointmentDateTime": "2024-11-19T14:00:00",
+      "latitude": 51.5074,
+      "longitude": -0.1278
     },
     {
       "id": 6,
-      "title": "Team Building Event",
-      "customer_name": "Sara Moore",
-      "company": "Tech Solutions",
-      "appointment_description": "Team bonding activities",
-      "appointment_date_time": "2024-11-22T16:30:00",
-      "appointment_location": {
-        "latitude": 34.0522,
-        "longitude": -118.2437
-      }
+      "title": "Marketing Strategy",
+      "customerName": "Samantha Green",
+      "company": "Creative Agency",
+      "description": "Discussing the upcoming marketing campaigns for the next quarter",
+      "appointmentDateTime": "2024-11-20T16:00:00",
+      "latitude": 34.0522,
+      "longitude": -118.2437
     },
     {
       "id": 7,
-      "title": "Client Review",
-      "customer_name": "Chris Brown",
-      "company": "Design Masters",
-      "appointment_description": "Reviewing design drafts",
-      "appointment_date_time": "2024-11-23T12:00:00",
-      "appointment_location": {
-        "latitude": 37.7749,
-        "longitude": -122.4194
-      }
+      "title": "Financial Review",
+      "customerName": "Michael Brown",
+      "company": "Global Finance",
+      "description": "Reviewing financial performance and strategies for growth",
+      "appointmentDateTime": "2024-11-20T10:30:00",
+      "latitude": 48.8566,
+      "longitude": 2.3522
     },
     {
       "id": 8,
-      "title": "Investor Pitch",
-      "customer_name": "Mia Williams",
-      "company": "Future Ventures",
-      "appointment_description": "Pitching new business ideas",
-      "appointment_date_time": "2024-11-24T10:30:00",
-      "appointment_location": {
-        "latitude": 40.730610,
-        "longitude": -73.935242
-      }
+      "title": "Customer Feedback Session",
+      "customerName": "Linda White",
+      "company": "Retail Solutions",
+      "description": "Collecting customer feedback for new product launch",
+      "appointmentDateTime": "2024-11-21T13:00:00",
+      "latitude": 52.3676,
+      "longitude": 4.9041
     },
     {
       "id": 9,
-      "title": "Health Checkup",
-      "customer_name": "David Green",
-      "company": "Wellness Clinic",
-      "appointment_description": "Annual health checkup",
-      "appointment_date_time": "2024-11-25T09:00:00",
-      "appointment_location": {
-        "latitude": 34.0522,
-        "longitude": -118.2437
-      }
+      "title": "Employee Training",
+      "customerName": "James Davis",
+      "company": "TechCorp",
+      "description": "Training session for new employees on company systems",
+      "appointmentDateTime": "2024-11-22T08:00:00",
+      "latitude": 40.7306,
+      "longitude": -73.9352
     },
     {
       "id": 10,
-      "title": "Job Interview",
-      "customer_name": "Grace Taylor",
-      "company": "ABC Tech",
-      "appointment_description": "Interview for software engineer role",
-      "appointment_date_time": "2024-11-26T14:00:00",
-      "appointment_location": {
-        "latitude": 36.7783,
-        "longitude": -119.4179
-      }
+      "title": "Vendor Negotiations",
+      "customerName": "Olivia Martinez",
+      "company": "Manufacturing Ltd.",
+      "description": "Negotiating terms with a new vendor for materials supply",
+      "appointmentDateTime": "2024-11-22T12:00:00",
+      "latitude": 37.7749,
+      "longitude": -122.4194
     },
     {
       "id": 11,
-      "title": "Board Meeting",
-      "customer_name": "Henry Lewis",
-      "company": "FinTech Corp",
-      "appointment_description": "Discussing financial results and projections",
-      "appointment_date_time": "2024-11-27T16:00:00",
-      "appointment_location": {
-        "latitude": 37.7749,
-        "longitude": -122.4194
-      }
+      "title": "Quarterly Review",
+      "customerName": "Robert King",
+      "company": "Enterprise Solutions",
+      "description": "Reviewing quarterly progress with senior management",
+      "appointmentDateTime": "2024-11-23T10:00:00",
+      "latitude": 40.7306,
+      "longitude": -73.9352
     },
     {
       "id": 12,
-      "title": "Sales Strategy Meeting",
-      "customer_name": "Oliver White",
-      "company": "Retail Group",
-      "appointment_description": "Planning Q4 sales strategies",
-      "appointment_date_time": "2024-11-28T13:00:00",
-      "appointment_location": {
-        "latitude": 40.7128,
-        "longitude": -74.0060
-      }
+      "title": "Investor Meeting",
+      "customerName": "Emma Carter",
+      "company": "Tech Ventures",
+      "description": "Meeting with investors to discuss funding opportunities",
+      "appointmentDateTime": "2024-11-23T14:00:00",
+      "latitude": 34.0522,
+      "longitude": -118.2437
     },
     {
       "id": 13,
-      "title": "Customer Feedback Session",
-      "customer_name": "Sophia Harris",
-      "company": "Software Solutions",
-      "appointment_description": "Collecting feedback on recent product update",
-      "appointment_date_time": "2024-11-29T11:30:00",
-      "appointment_location": {
-        "latitude": 51.5074,
-        "longitude": -0.1278
-      }
+      "title": "Team Retrospective",
+      "customerName": "Sarah Wilson",
+      "company": "Creative Labs",
+      "description": "Reviewing past sprint and planning for next sprint",
+      "appointmentDateTime": "2024-11-24T09:00:00",
+      "latitude": 41.8781,
+      "longitude": -87.6298
     },
     {
       "id": 14,
-      "title": "Project Update",
-      "customer_name": "Liam Clark",
-      "company": "Project Management Inc.",
-      "appointment_description": "Project status update and next steps",
-      "appointment_date_time": "2024-11-30T10:00:00",
-      "appointment_location": {
-        "latitude": 48.8566,
-        "longitude": 2.3522
-      }
+      "title": "Sales Strategy Meeting",
+      "customerName": "John Taylor",
+      "company": "Retail Partners",
+      "description": "Planning sales strategies for upcoming product launch",
+      "appointmentDateTime": "2024-11-24T12:00:00",
+      "latitude": 51.5074,
+      "longitude": -0.1278
     },
     {
       "id": 15,
-      "title": "Client Onboarding",
-      "customer_name": "Emma Martinez",
-      "company": "Digital Solutions",
-      "appointment_description": "Onboarding new client and setting expectations",
-      "appointment_date_time": "2024-12-01T14:00:00",
-      "appointment_location": {
-        "latitude": 34.0522,
-        "longitude": -118.2437
-      }
+      "title": "R&D Discussion",
+      "customerName": "David Brown",
+      "company": "Innovation Labs",
+      "description": "Discussing new research and development initiatives",
+      "appointmentDateTime": "2024-11-25T09:00:00",
+      "latitude": 40.7128,
+      "longitude": -74.0060
     },
     {
       "id": 16,
-      "title": "Contract Signing",
-      "customer_name": "Ava Thompson",
-      "company": "Legal Advisors",
-      "appointment_description": "Signing legal contract",
-      "appointment_date_time": "2024-12-02T15:30:00",
-      "appointment_location": {
-        "latitude": 40.7128,
-        "longitude": -74.0060
-      }
+      "title": "Product Launch Planning",
+      "customerName": "Rachel Adams",
+      "company": "NextGen Products",
+      "description": "Planning the launch of new product line",
+      "appointmentDateTime": "2024-11-25T14:00:00",
+      "latitude": 48.8566,
+      "longitude": 2.3522
     },
     {
       "id": 17,
-      "title": "Team Meeting",
-      "customer_name": "James Anderson",
-      "company": "Engineering Solutions",
-      "appointment_description": "Discussing team progress and challenges",
-      "appointment_date_time": "2024-12-03T11:00:00",
-      "appointment_location": {
-        "latitude": 37.7749,
-        "longitude": -122.4194
-      }
+      "title": "Customer Onboarding",
+      "customerName": "Daniel Smith",
+      "company": "Cloud Services",
+      "description": "Onboarding a new customer to our SaaS platform",
+      "appointmentDateTime": "2024-11-26T08:00:00",
+      "latitude": 37.7749,
+      "longitude": -122.4194
     },
     {
       "id": 18,
-      "title": "Vendor Negotiation",
-      "customer_name": "Charlotte Lewis",
-      "company": "Retail Group",
-      "appointment_description": "Negotiating terms with new vendors",
-      "appointment_date_time": "2024-12-04T16:00:00",
-      "appointment_location": {
-        "latitude": 41.8781,
-        "longitude": -87.6298
-      }
-    },
-    {
-      "id": 19,
-      "title": "Client Dinner",
-      "customer_name": "Benjamin Scott",
-      "company": "Global Consults",
-      "appointment_description": "Dinner to discuss partnership opportunities",
-      "appointment_date_time": "2024-12-05T18:30:00",
-      "appointment_location": {
-        "latitude": 51.5074,
-        "longitude": -0.1278
-      }
+      "title": "Tech Update",
+      "customerName": "Julia Clark",
+      "company": "Software Innovations",
+      "description": "Discussing new tech updates and feature releases",
+      "appointmentDateTime": "2024-11-26T12:00:00",
+      "latitude": 40.7306,
+      "longitude": -73.9352
     }
   ]
 }

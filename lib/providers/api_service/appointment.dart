@@ -1,9 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:future_hub_test/models/appointment_response.dart';
-
-import '../../constants/error_handler.dart';
+import 'package:future_hub_test/database/appointment_manager.dart';
 
 class ApiService {
   late Dio _dio;
@@ -21,29 +19,55 @@ class ApiService {
     ));
   }
 
-    Future<Either<dynamic, bool>> createAppointments(Map<String, dynamic> createData) async {
+  Future<Either<dynamic, bool>> createAppointments(Appointment appointment) async {
+    debugPrint("My data is ${appointment.toString()}");
     try {
-      final response = await _dio.post('/appointments', data: createData);
-      // debugPrint("getAllAppointment response ${response.data}");
+      final response = await _dio.post('/appointments', data: {
+      'title': appointment.title,
+      'customer_name': appointment.customerName,
+      'company': appointment.company,
+      'description': appointment.description,
+      'appointmentDateTime': appointment.appointmentDateTime.toIso8601String(),
+      'latitude': appointment.latitude,
+      'longitude': appointment.longitude,
+      },);
+      debugPrint("createAppointment response ${response.data}");
       return right(true);
     } on DioException catch (error) {
-      debugPrint("getAllAppointment error response is ${error.response?.data}");
+      debugPrint("createAppointment error response is ${error.response?.data}");
       return left(false);
     }
   }
 
-  Future<Either<dynamic, List<AppointmentResponse>>> getAppointments() async {
+
+  Future<Either<String, Appointment>> getAppointmentById(int id) async {
     try {
-      final response = await _dio.get('/appointments');
-      // debugPrint("getAllAppointment response ${response.data}");
-      List<dynamic> data = response.data;
-      List<AppointmentResponse> successResponse =
-          data.map((json) => AppointmentResponse.fromJson(json)).toList();
-      return right(successResponse);
+      debugPrint("Fetching appointment with ID: $id");
+      final response = await _dio.get('/appointments/$id',
+      queryParameters: {"id" : id }
+      );
+
+      // Check if the request was successful (status code 200)
+      if (response.statusCode == 200) {
+        debugPrint("Response: ${response.data}");
+
+        // Convert the response data to AppointmentIdResponse
+        Appointment appointment = Appointment.fromMap(response.data);
+        debugPrint("Successfully fetched appointment: ${appointment.toString()}");
+
+        // Return the successful response with the AppointmentIdResponse object
+        return right(appointment);
+      } else {
+        return left("Appointment not found");
+      }
     } on DioException catch (error) {
-      debugPrint("getAllAppointment error response is ${error.response?.data}");
-      var errorResponse = errorHandler(error);
-      return left(errorResponse);
+      // Handle Dio specific errors (e.g., network issues, server errors)
+      debugPrint("Dio error: ${error.message}");
+      return left("Error occurred: ${error.message}");
+    } catch (e) {
+      // Handle any other unexpected errors
+      debugPrint("Unexpected error: $e");
+      return left("Unexpected error occurred: $e");
     }
   }
 
@@ -51,7 +75,7 @@ class ApiService {
     try {
       // final response = await _dio.get('/appointments');
       final response = await _dio.delete('/appointments/$id');
-      // debugPrint("getAllAppointment response ${response.data}");
+      // debugPrint("deleteAppointments response ${response.data}");
       // Appointment deleted successfully
       return right(true);
     } on DioException catch (error) {

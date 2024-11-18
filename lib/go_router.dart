@@ -1,4 +1,5 @@
 import 'package:future_hub_test/pages/create/create_page.dart';
+import 'package:future_hub_test/pages/google_map/google_map_page.dart';
 import 'package:future_hub_test/pages/home/home_page.dart';
 import 'package:future_hub_test/pages/update/update_page.dart';
 import 'package:go_router/go_router.dart';
@@ -30,6 +31,20 @@ final GoRouter goRouter = GoRouter(
       path: "/create_page",
       builder: (context, state) {
         return const CreatePage();
+      },
+    ),
+    GoRoute(
+      name: "/google_map_page",
+      path: "/google_map_page",
+      builder: (context, state) {
+        final Map<String, dynamic>? extraData =
+        state.extra as Map<String, dynamic>?;
+        final String latitude = extraData?['latitude'] ?? 'Unknown';
+        final String longitude = extraData?['longitude'] ?? 'Unknown';
+        return GoogleMapPage(
+          latitude: latitude,
+          longitude: longitude,
+        );
       },
     ),
 

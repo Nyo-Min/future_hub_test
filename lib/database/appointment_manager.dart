@@ -1,47 +1,47 @@
 class Appointment {
-  final int id;
-  final String title;
-  final String customerName;
-  final String company;
-  final String appointmentDescription;
-  final DateTime appointmentDateTime;
-  final double latitude;
-  final double longitude;
+  int id;  // SQLite primary key
+  String title;
+  String customerName;
+  String company;
+  String description;
+  DateTime appointmentDateTime;
+  double latitude;
+  double longitude;
 
   Appointment({
     required this.id,
     required this.title,
     required this.customerName,
     required this.company,
-    required this.appointmentDescription,
+    required this.description,
     required this.appointmentDateTime,
     required this.latitude,
     required this.longitude,
   });
 
-  // Convert Appointment to Map (SQLite format)
+  // Convert Appointment to Map for SQLite storage
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'title': title,
-      'customer_name': customerName,
+      'customerName': customerName,
       'company': company,
-      'appointment_description': appointmentDescription,
-      'appointment_date_time': appointmentDateTime.toIso8601String(),
+      'description': description,
+      'appointmentDateTime': appointmentDateTime.toIso8601String(),
       'latitude': latitude,
       'longitude': longitude,
     };
   }
 
-  // Convert Map to Appointment (used for reading from SQLite)
+  // Convert Map to Appointment
   factory Appointment.fromMap(Map<String, dynamic> map) {
     return Appointment(
       id: map['id'],
       title: map['title'],
-      customerName: map['customer_name'],
+      customerName: map['customerName'],
       company: map['company'],
-      appointmentDescription: map['appointment_description'],
-      appointmentDateTime: DateTime.parse(map['appointment_date_time']),
+      description: map['description'],
+      appointmentDateTime: DateTime.parse(map['appointmentDateTime']),
       latitude: map['latitude'],
       longitude: map['longitude'],
     );
