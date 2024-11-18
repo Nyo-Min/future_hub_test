@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 class ApiException {
   List<String> getExceptionMessage(DioException exception) {
     String hostErrorMessage =
-        "Unable to resolve host \"rewardappapi.upgapp.com\"";
+        "Unable to resolve host";
     switch (exception.type) {
       case DioExceptionType.badResponse:
         return [

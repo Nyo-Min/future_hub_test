@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:future_hub_test/providers/api_service/appointment.dart';
+import 'package:future_hub_test/constants/store_manager.dart';
 
 import '../../constants/color.dart';
 import '../../constants/size.dart';
 import '../../constants/text_style.dart';
+import '../../constants/widgets/header_text_style.dart';
 import '../../constants/widgets/sub_title_text_style.dart';
-import '../../constants/widgets/title_text_style.dart';
+import '../../database/database_helper.dart';
+import '../../services/sync_service.dart';
 
 class DeleteConfirmAlert extends StatefulWidget {
   final String appointmentId;
@@ -23,6 +25,18 @@ class _DeleteConfirmAlertState extends State<DeleteConfirmAlert> {
   @override
   void initState() {
     super.initState();
+  }
+
+  Future<void> deleteAppointmentId(int myId) async {
+    // Insert the appointment into the database
+    int result = await LocalDatabase.deleteAppointment(myId);
+    debugPrint("Appointment deleted with ID: $myId");
+    if (result > 0) {
+      popContext();
+      // SyncService().syncDeleteAppointment(myId);
+    } else {
+      debugPrint("Failed to delete appointment with ID $myId");
+    }
   }
 
   @override
@@ -51,7 +65,7 @@ class _DeleteConfirmAlertState extends State<DeleteConfirmAlert> {
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             color: Colors.white,
-            borderRadius: BorderRadius.circular(CustomSize.borderRadiusLarge),
+            borderRadius: BorderRadius.circular(CustomSize.borderRadiusMediumX),
             boxShadow: const [
               BoxShadow(
                 color: Colors.black26,
@@ -61,15 +75,17 @@ class _DeleteConfirmAlertState extends State<DeleteConfirmAlert> {
             ],
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              TitleTextStyle(
-                  titleText: "Delete appointment",
-                  titleStyle: robotoFontStyle.copyWith(
+              HeaderTextStyle(
+                  headerText: "Delete appointment",
+                  headerStyle: robotoFontStyle.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: CustomColor.primaryBlue)),
+                  ),
+              headerAlign: TextAlign.left,),
               const SizedBox(
-                height: CustomSize.borderRadiusLarge,
+                height: CustomSize.marginSmall,
               ),
               Container(
                 alignment: Alignment.centerLeft,
@@ -78,7 +94,7 @@ class _DeleteConfirmAlertState extends State<DeleteConfirmAlert> {
                   children: [
                     SubTitleTextStyle(
                         subTitleText:
-                            "Are you sure you want to delete this appointment? ${widget.appointmentId}",
+                            "Are you sure you want to delete this appointment?",
                         subTitleStyle: robotoFontStyle)
                   ],
                 ),
@@ -94,57 +110,56 @@ class _DeleteConfirmAlertState extends State<DeleteConfirmAlert> {
                       const SizedBox(
                         width: CustomSize.marginLarge,
                       ),
-                      Expanded(
-                        child: SizedBox(
-                          height: CustomSize.rowHeight,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    CustomSize.borderRadiusLarge),
-                              ),
-                              backgroundColor: CustomColor.primaryBlue,
-                            ),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: SubTitleTextStyle(
-                              subTitleText: "Cancel",
-                              subTitleStyle: robotoFontStyleWC,
-                              subTitleAlign: TextAlign.center,
-                            ),
+                      SizedBox(
+                        // height: CustomSize.rowHeight,
+                        child: GestureDetector(
+                          // style: ElevatedButton.styleFrom(
+                          //   shape: RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.circular(
+                          //         CustomSize.borderRadiusLarge),
+                          //   ),
+                          //   backgroundColor: CustomColor.primaryBlue,
+                          // ),
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: SubTitleTextStyle(
+                            subTitleText: "Cancel",
+                            subTitleStyle: robotoFontStyle.copyWith(color: CustomColor.primaryBlue),
+                            subTitleAlign: TextAlign.center,
                           ),
                         ),
                       ),
                       const SizedBox(
-                        width: CustomSize.marginSmallX,
+                        width: CustomSize.marginMedium,
                       ),
-                      Expanded(
-                        child: SizedBox(
-                          height: CustomSize.rowHeight,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      CustomSize.borderRadiusLarge),
-                                ),
-                                backgroundColor: CustomColor.primaryBlue,
-                              ),
-                              onPressed: () {
-                                ApiService().deleteAppointments(int.parse(widget.appointmentId)).then((deleteAppointmentRes) {
-                                  deleteAppointmentRes.fold((errorResponse) {}, // Handle the error case
-                                          (successResponse) {
-                                        debugPrint("My delete data is $successResponse");
-                                        Navigator.of(context).pop();
-                                      });
-                                });
-                              },
-                              child: SubTitleTextStyle(
-                                subTitleText: "OK",
-                                subTitleStyle: robotoFontStyleWC,
-                                subTitleAlign: TextAlign.center,
-                              )),
-                        ),
+                      SizedBox(
+                        // height: CustomSize.rowHeight,
+                        child: GestureDetector(
+                            // style: ElevatedButton.styleFrom(
+                            //   shape: RoundedRectangleBorder(
+                            //     borderRadius: BorderRadius.circular(
+                            //         CustomSize.borderRadiusLarge),
+                            //   ),
+                            //   backgroundColor: CustomColor.primaryBlue,
+                            // ),
+                            onTap: () async {
+                              // ApiService().deleteAppointments(int.parse(widget.appointmentId)).then((deleteAppointmentRes) {
+                              //   deleteAppointmentRes.fold((errorResponse) {}, // Handle the error case
+                              //           (successResponse) {
+                              //         debugPrint("My delete data is $successResponse");
+                              //         Navigator.of(context).pop();
+                              //       });
+                              // });
+                              StoreManager.offlineDelete = [int.parse(widget.appointmentId)];
+                              deleteAppointmentId(int.parse(widget.appointmentId));
+                              await SyncService().checkOnlineStatus();
+                            },
+                            child: SubTitleTextStyle(
+                              subTitleText: "Delete",
+                              subTitleStyle: robotoFontStyle.copyWith(color: Colors.red),
+                              subTitleAlign: TextAlign.center,
+                            )),
                       )
                     ],
                   ))
@@ -153,5 +168,9 @@ class _DeleteConfirmAlertState extends State<DeleteConfirmAlert> {
         ),
       ],
     );
+  }
+
+  void popContext() {
+    Navigator.of(context).pop();
   }
 }
