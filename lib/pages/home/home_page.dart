@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:future_hub_test/constants/widgets/header_text_style.dart';
 import 'package:future_hub_test/constants/widgets/label_text_style.dart';
+import 'package:future_hub_test/constants/widgets/sub_title_text_style.dart';
 import 'package:future_hub_test/pages/google_map/google_map_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -114,17 +114,19 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                          left: CustomSize.paddingSmall,
-                                          right: CustomSize.paddingSmall,
-                                        ),
-                                        alignment: Alignment.centerLeft,
-                                        child: HeaderTextStyle(
-                                          headerText:
-                                              "Title : ${appointments[index].title}",
-                                          headerStyle: robotoFontStyle.copyWith(
-                                              fontWeight: FontWeight.bold),
+                                      Expanded(
+                                        child: Container(
+                                          margin: const EdgeInsets.only(
+                                            left: CustomSize.paddingSmall,
+                                            right: CustomSize.paddingSmall,
+                                          ),
+                                          alignment: Alignment.centerLeft,
+                                          child: TitleTextStyle(
+                                            titleText:
+                                                "Title : ${appointments[index].title}",
+                                            titleStyle: robotoFontStyle.copyWith(
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                         ),
                                       ),
                                       Row(
@@ -215,14 +217,22 @@ class _HomePageState extends State<HomePage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                        "Customer Name : ${appointments[index].customerName}"),
-                                    Text(
-                                        "Company : ${appointments[index].company}"),
-                                    Text(
-                                        "Appointment Desc : ${appointments[index].description}"),
-                                    Text(
-                                        "Date Time ${appointments[index].appointmentDateTime}"),
+                                    SubTitleTextStyle(
+                                        subTitleText: "Customer Name : ${appointments[index].customerName}",
+                                        subTitleStyle: robotoFontStyle
+                                    ),
+                                    SubTitleTextStyle(
+                                        subTitleText: "Company : ${appointments[index].company}",
+                                        subTitleStyle: robotoFontStyle
+                                    ),
+                                    SubTitleTextStyle(
+                                        subTitleText: "Appointment Desc : ${appointments[index].description}",
+                                        subTitleStyle: robotoFontStyle
+                                    ),
+                                    SubTitleTextStyle(
+                                        subTitleText: "Date Time ${appointments[index].appointmentDateTime}",
+                                        subTitleStyle: robotoFontStyle
+                                    ),
                                     GestureDetector(
                                       onTap: () async {
                                         await Navigator.push(
