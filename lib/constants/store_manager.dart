@@ -8,7 +8,7 @@ class StoreManager {
   static List<Appointment> offlineAdded = [];
   static List<int> offlineDelete = [];
   static List<Appointment> offlineUpdate = [];
-  static int updateCount = 2;
+  static int updateCount = 3;
 
   // Getter for name
   static List<Appointment> get getAppointmentList => List.unmodifiable(offlineAdded);

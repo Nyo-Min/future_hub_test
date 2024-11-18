@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:future_hub_test/constants/store_manager.dart';
 
 import '../database/appointment_manager.dart';
+import 'package:http/http.dart' as http;
 
 class SyncService {
   late Dio _dio;
@@ -54,6 +57,19 @@ class SyncService {
   }
 
   // Sync delete an appointment
+  // Future<void> updateAppointmentInAPI(Appointment updateAppointmentList) async {
+  //   int myId = updateAppointmentList.id;
+  //   debugPrint("My appointment is ${updateAppointmentList.toString()}");
+  //   try {
+  //     final response = await _dio.put('appointments/$myId', data: updateAppointmentList.toMap());
+  //     if(response.statusCode == 200){
+  //       print("update successful $myId");
+  //     }
+  //   } catch (e) {
+  //     print("Error syncing appointment deletion: $e");
+  //   }
+  // }
+
   Future<void> updateAppointmentInAPI(Appointment updateAppointmentList) async {
     int myId = updateAppointmentList.id;
     debugPrint("My appointment is ${updateAppointmentList.toString()}");
@@ -61,6 +77,15 @@ class SyncService {
       final response = await _dio.put('appointments/$myId', data: updateAppointmentList.toMap());
       if(response.statusCode == 200){
         print("update successful $myId");
+      }
+
+      if (response.statusCode == 200) {
+        // Successful update
+        print("Appointment updated successfully.");
+        // Handle successful update, maybe parse the response and update local data
+      } else {
+        // Something went wrong, maybe the ID was not found
+        print("Failed to update appointment: ${response.statusCode}");
       }
     } catch (e) {
       print("Error syncing appointment deletion: $e");
